@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "f31b9b82-c2e8-4326-a23b-89dee470e5bc",
+		"name": "inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25822962"
+	},
+	"item": [
+		{
+			"name": "create order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"order_created_fk_user_id\": \"6b26a664-a36d-42c0-bb55-897bb53954be\",\n    \"order_order_number\": \"000051\",\n    \"order_name\": \"Order 51\",\n    \"order_pickup_at\": \"2025-10-16T18:30:00.000Z\",\n    \"order_return_at\": \"2025-10-21T18:30:00.000Z\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save order items",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oi_order_fk_order_id\": \"3325f2ab-38b7-4a01-a379-754d3a0fc18a\",\r\n    \"oi_inventory_fk_inventory_id\":\"8ab027c5-5155-4585-ae8b-116162163d0b\",\r\n    \"oi_created_fk_user_id\": \"6b26a664-a36d-42c0-bb55-897bb53954be\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/order-items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order-items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List hold request by admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/orders/hold-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"hold-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hold order request",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_request_hold\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders/request-hold/3325f2ab-38b7-4a01-a379-754d3a0fc18a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"request-hold",
+						"3325f2ab-38b7-4a01-a379-754d3a0fc18a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve order of user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"approved\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders/approve-hold/f88c58e6-6e28-4757-8eeb-fd1542a755a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"approve-hold",
+						"f88c58e6-6e28-4757-8eeb-fd1542a755a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update order dates",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_pickup_at\": \"2025-10-16T18:30:00.000Z\",\r\n    \"order_return_at\": \"2025-10-21T18:30:00.000Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders/update-order/3325f2ab-38b7-4a01-a379-754d3a0fc18a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"update-order",
+						"3325f2ab-38b7-4a01-a379-754d3a0fc18a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/orders/confirm-order/3325f2ab-38b7-4a01-a379-754d3a0fc18a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"confirm-order",
+						"3325f2ab-38b7-4a01-a379-754d3a0fc18a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete order items",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/order-items/remove-order-item/f88c58e6-6e28-4757-8eeb-fd1542a755a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order-items",
+						"remove-order-item",
+						"f88c58e6-6e28-4757-8eeb-fd1542a755a4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
