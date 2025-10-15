@@ -94,6 +94,7 @@ ________________________________________________________________________________
 ## API Overview and Testing
 
 ### Implemented Flows
+- Create order: `POST /orders`
 - Request Hold: `PUT /orders/request-hold/:order_id`
 - Remove Order Item: `DELETE /order-items/remove-order-item/:oi_id`
 - Update Order Dates: `PUT /orders/update-order/:order_id`
